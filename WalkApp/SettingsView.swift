@@ -8,8 +8,36 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var goal: String = "10000"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            Form {
+                
+                Section(header: Text("Personal Information")) {
+                    TextField("First Name", text: $firstName)
+                    TextField("Last Name", text: $lastName)
+                }
+                
+                Section(header: Text("Daily Steps Goal")) {
+                    TextField("Goal", text: $goal)
+                        .keyboardType(.numberPad)
+                }
+            }
+            .navigationTitle("Account")
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button("Save", action: saveUser)
+                }
+            }
+        }
+        .accentColor(.red)
+    }
+    
+    func saveUser() {
+        print("User saved")
     }
 }
 

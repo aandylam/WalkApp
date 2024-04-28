@@ -6,17 +6,30 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem() {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            FriendsView()
+                .tabItem() {
+                    Image(systemName: "person.2")
+                    Text("Friends")
+                }
+            SettingsView()
+                .tabItem() {
+                    Image(systemName: "line.3.horizontal")
+                    Text("Settings")
+                }
         }
-        .padding()
     }
+    
+
 }
 
 #Preview {

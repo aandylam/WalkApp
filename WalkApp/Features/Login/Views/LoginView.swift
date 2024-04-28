@@ -39,10 +39,9 @@ struct LoginView: View {
                 HStack {
                     HStack {
                         Text("🇺🇸 +1") // Hardcoded country code
-                            .font(.custom("Poppins-Regular", size: 16))
-                        
+                            .font(.system(size:16))
                         TextField("(201) 555-0123", text: $login.phoneNumber)
-                            .font(.custom("Poppins-Regular", size: 16))
+                            .font(.system(size:16))
                             .onChange(of: login.phoneNumber) {
                                 // Limit the character count to 14
                                 // Phone number is 14 characters long including dash & parentheses
@@ -84,20 +83,22 @@ struct LoginView: View {
                 }
                 
                 Text("Enter your phone number to receive a OTP")
-                    .font(.custom("Poppins-Regular", size: 14))
-                    .foregroundStyle(.darkerGray)
+                // change font size
+                    .font(.system(size:16))
+                    .foregroundStyle(.gray)
                     .padding(.bottom, 30)
                 
                 Button {
                     continueClick()
                 } label: {
                     Text("Login")
-                        .font(.custom("Poppins-Medium", size: 18))
+                        //change font size
+                        .font(.system(size:16))
                         .padding(.vertical, 20)
                         .padding(.horizontal, 30)
                         .foregroundStyle(login.phoneNumber.count < 14 ? .darkerGray : .white)
                         .frame(width: 200, height: 50)
-                        .background(login.phoneNumber.count < 14 ? .lighterGray : login.phoneNumber.count == 14 ? .darkTeal : Color.red.opacity(0.5))
+                        .background(login.phoneNumber.count < 14 ? .gray : login.phoneNumber.count == 14 ? .blue : Color.red.opacity(0.5))
                         .cornerRadius(15)
                 }
                 .disabled(login.phoneNumber.count != 14)
